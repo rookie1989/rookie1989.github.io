@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="John Doe"><title>docker入门指南 - - 基本操作篇 · Hexo</title><meta name="description" content="更换国内镜像源docker store地址默认是在国外，下载速度很慢，自行更换国内docker加速地址。
+名词解释image: 镜像containers: 容器docker-machine: docker虚拟主机docker store: docker存储云
+术语Image 和 ContainerI"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Hexo</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>docker入门指南 - - 基本操作篇</a></h3></div><div class="post-content"><p>更换国内镜像源<br>docker store地址默认是在国外，下载速度很慢，自行更换国内docker加速地址。</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>image: 镜像<br>containers: 容器<br>docker-machine: docker虚拟主机<br>docker store: docker存储云</p>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><h3 id="Image-和-Container"><a href="#Image-和-Container" class="headerlink" title="Image 和 Container"></a>Image 和 Container</h3><p>Image可以理解为一个系统镜像，Container是Image在运行时的一个状态。<br>如果拿虚拟机作一个比喻的话，Image就是关机状态下的磁盘文件，Container就是虚拟机运行时的磁盘文件，包括内存数据。<br>Image 是系统一般来源是官方资源，或者比较稳定成熟的资源<br>Container 是启动系统后的运行时环境， 包括磁盘 + 运行的其他软件 + 环境配置他们之间可以互相转换。</p>
+<h3 id="docker-daemon"><a href="#docker-daemon" class="headerlink" title="docker daemon"></a>docker daemon</h3><p>主机上运行的后台服务管理构建，运行和分发Docker容器</p>
+<h3 id="docker-client"><a href="#docker-client" class="headerlink" title="docker client"></a>docker client</h3><p>命令行工具，允许用户与Docker守护进程交互</p>
+<h3 id="docker-store"><a href="#docker-store" class="headerlink" title="docker store"></a>docker store</h3><p>docker images的注册地址，可以在其中找到受信任的企业级容器，插件和Docker版本。相当于docker的仓库。<br>运行</p>
+<blockquote>
+<p>docker HelloWorld<br>docker run hello-world</p>
+</blockquote>
+<p>拉取docker cloud项目</p>
+<blockquote>
+<p>docker pull alpine</p>
+</blockquote>
+<p>docker run hello-world 背后也做了 docker pull 的动作去docker服务器上面下载。<br>提示：如果本地不存在这个image的话，如果本地已经存在，就不去docker store上面下载了。<br>查看所有的docker镜像</p>
+<blockquote>
+<p>docker images</p>
+</blockquote>
+<p>执行 docker 的命令</p>
+<blockquote>
+<p>docker run alpine ls -l</p>
+</blockquote>
+<p>进入一个docker</p>
+<blockquote>
+<p>docker run -it alpine /bin/sh</p>
+</blockquote>
+<p>exit退出<br>查看当前运行的 docker</p>
+<blockquote>
+<p>docker ps</p>
+</blockquote>
+<p>查看全部 docker</p>
+<blockquote>
+<p>docker ps -a</p>
+</blockquote>
+<p>获取 docker run 参数列表</p>
+<blockquote>
+<p>docker run –help</p>
+</blockquote>
+<p>查看一个docker的信息</p>
+<blockquote>
+<p>docker inspect alpine</p>
+</blockquote>
+<p>暂停 docker 容器</p>
+<blockquote>
+<p>docker stop xxx<br>  xxx 为 docker容器的名字 或CONTAINER ID</p>
+</blockquote>
+<p>删除一个docker容器</p>
+<blockquote>
+<p>docker rm xxx</p>
+</blockquote>
+<p>-f 运行中的docker容器，需要先暂停再删除，或者直接加此参数</p>
+<blockquote>
+<p>docker rm -f xxx</p>
+</blockquote>
+<h2 id="基本的docker-web项目"><a href="#基本的docker-web项目" class="headerlink" title="基本的docker web项目"></a>基本的docker web项目</h2><p>从docker store获取依赖的docker image<br>// docker pull dockersamples/static-site<br>docker run -d dockersamples/static-site<br>-d 表示后台运行，不加-d，就像Tomcat一样，无法再在当前命令窗口操作了，默认是flase。<br>detached 模式运行docker</p>
+<blockquote>
+<p>docker run –name static-site -e AUTHOR=”Your Name” -d -P dockersamples/static-site</p>
+</blockquote>
+<p>-d 独立于当前命令窗口运行<br>-P 将所有暴露的docker容器端口，映射到真实主机上面的随机端口<br>-p 将当前主机上面的指定端口，映射到docker容器的一个端口：-p 8888:80 将当前主机的8888端口映射到docker容器的80端口。<br>–name 指定容器的名称<br>-e 可以传递环境变量给docker容器<br>AUTHOR 环境变量的名称和值，可以自己任意指定<br>查看docker容器映射的端口<br>docker port [容器名 –name 指定的值]</p>
+<blockquote>
+<p>$ docker port static-site<br>443/tcp -&gt; 0.0.0.0:32772<br>80/tcp -&gt; 0.0.0.0:32773</p>
+</blockquote>
+<p>使用localhost:[docer80的本地映射端口]访问：<br><a href="http://localhost:32769/" target="_blank" rel="external">http://localhost:32769/</a></p>
+<h2 id="创建docker主机"><a href="#创建docker主机" class="headerlink" title="创建docker主机"></a>创建docker主机</h2><p>列出所有的docker主机<br>docker-machine ls<br>获取docker主机的IP地址<br>docker-machine ip default<br>可能出现错误:</p>
+<blockquote>
+<p>Host does not exist: “default”</p>
+</blockquote>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h3><p>docker-machine create default<br>如果继续报错，Mac需要安装：VirtualBox<br><a href="https://www.docker.com/products/docker-toolbox" target="_blank" rel="external">https://www.docker.com/products/docker-toolbox</a></p>
+<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><p>docker-machine create -d virtualbox default</p>
+<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p>需要在添加删除程序里面开启hyperv，只有专业版的Windows才有，家庭版不存在此功能。<br>docker-machine create –driver hyperv vm<br><a href="https://docs.docker.com/machine/drivers/hyper-v/" target="_blank" rel="external">https://docs.docker.com/machine/drivers/hyper-v/</a><br>安装完以后重启docker</p>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux:"></a>Linux:</h4><p>sudo service docker restart<br>Mac 和 Windows 图形化界面手动重启<br>然后继续创建：<br>docker-machine create default<br>名字可以随便起，不一定要叫default<br>不报错任何错误，如：</p>
+<blockquote>
+<p>Running pre-create checks…<br>Error with pre-create check: “exit status 126”</p>
+</blockquote>
+<p>说明安装成功：</p>
+<blockquote>
+<p>Running pre-create checks…<br>Creating machine…<br>(default) Copying<br>(default) Creating VirtualBox VM…<br>(default) Creating SSH key…<br>(default) Starting the VM…<br>(default) Check network to re-create if needed…<br>(default) Found a new host-only adapter: “vboxnet0”<br>(default) Waiting for an IP…<br>Waiting for machine to be running, this may take a few minutes…<br>Detecting operating system of created instance…<br>Waiting for SSH to be available…<br>Detecting the provisioner…<br>Provisioning with boot2docker…<br>Copying certs to the local machine directory…<br>Copying certs to the remote machine…<br>Setting Docker configuration on the remote daemon…<br>Checking connection to Docker…<br>Docker is up and running!<br>To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env default</p>
+</blockquote>
+<p>然后再次查看docker主机：</p>
+<blockquote>
+<p>docker-machine ls</p>
+</blockquote>
+<p>看到NAME为default的主机，说明成功。<br>再次输入：docker-machine ip default<br>得到一个主机的IP</p>
+<blockquote>
+<p>192.168.99.100</p>
+</blockquote>
+<p>进入docker主机<br>docker-machine ssh default<br>看到命令行前缀改变，表示成功</p>
+<blockquote>
+<p>docker@default:~$</p>
+</blockquote>
+<p>从docker store下载并运行dockersamples/static-site：<br>docker run –name static-site -e AUTHOR=”Your Name” -d -P dockersamples/static-site<br>然后查看docker主机里面容器的映射端口，使用docker主机的ip + 主机内容器的端口就可以访问到主机内的容器服务：<br>查看容器映射端口<br>docker port static-site</p>
+<blockquote>
+<p>443/tcp -&gt; 0.0.0.0:32768<br>80/tcp -&gt; 0.0.0.0:32769</p>
+</blockquote>
+<p><a href="http://192.168.99.100:32769/" target="_blank" rel="external">http://192.168.99.100:32769/</a></p>
+<p>参考链接：<a href="http://www.imooc.com/article/20242" target="_blank" rel="external">http://www.imooc.com/article/20242</a></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-11-19</span><i class="fa fa-tag"></i><a href="/tags/技术/" title="技术" class="tag">技术 </a><a href="/tags/docker/" title="docker" class="tag">docker </a><a href="/tags/读书笔记/" title="读书笔记" class="tag">读书笔记 </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://timebook.me/2017/11/19/doker-start/,Hexo,docker入门指南 - - 基本操作篇,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/11/19/docker-use-aliyun-jiasu/" title="Docker使用阿里云docker镜像加速" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
