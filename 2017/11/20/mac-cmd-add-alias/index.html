@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="John Doe"><title>mac下alias配置终端命令的别名 · Hexo</title><meta name="description" content="这里只写我自己使用的方法以一个很简单的命令为例
+
+alias gits=’git status’ 
+
+为了统一管理自定义的alias命令，可以新建一个~/.bash_aliases文件统一放置各种自定义alias
+编辑profile文件
+
+vim /etc/profile
+
+然后在~/.bash_p"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Hexo</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>mac下alias配置终端命令的别名</a></h3></div><div class="post-content"><p>这里只写我自己使用的方法<br>以一个很简单的命令为例</p>
+<blockquote>
+<p>alias gits=’git status’ </p>
+</blockquote>
+<p>为了统一管理自定义的alias命令，可以新建一个~/.bash_aliases文件统一放置各种自定义alias</p>
+<p>编辑profile文件</p>
+<blockquote>
+<p>vim /etc/profile</p>
+</blockquote>
+<p>然后在~/.bash_profile或/etc/profile（二选一） 里面添加如下这一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">［［ -f ~/.bash_aliases ］］ &amp;&amp; . ~/.bash_aliases</div></pre></td></tr></table></figure></p>
+<p>逻辑含义就是检查是否存在~/.bash_aliases 这个文件，如果存在就执行 . 命令加载此文件<br>或者这一段，其实逻辑含义一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ［ -f ~/.bash_aliases ］; then</div><div class="line">    . ~/.bash_aliases</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>或者也可以写成这样的形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test -f ~/.bash_aliases &amp;&amp; source ~/.bash_aliases</div></pre></td></tr></table></figure></p>
+<p>这样配置以后，所有想要做的别名工作都可以通过编辑~/.bash_aliases 来进行，统一管理。</p>
+<hr>
+<p>创建bash_aliases文件</p>
+<blockquote>
+<p>cd<br>vim .bash_aliases<br>alias gits=’git status’ </p>
+</blockquote>
+<p>通过source命令重新执行命令生效</p>
+<blockquote>
+<p>source .bash_profile</p>
+</blockquote>
+<p>现在你就可以在命令行窗口直接输入gits代替git status命令了</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-11-20</span><i class="fa fa-tag"></i><a href="/tags/技术/" title="技术" class="tag">技术 </a><a href="/tags/mac/" title="mac" class="tag">mac </a><a href="/tags/alias/" title="alias" class="tag">alias </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://timebook.me/2017/11/20/mac-cmd-add-alias/,Hexo,mac下alias配置终端命令的别名,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/11/20/docker-delete-cmd/" title="Docker 容器镜像删除" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
