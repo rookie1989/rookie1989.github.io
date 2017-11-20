@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="John Doe"><title>Docker命令使用详解 · Hexo</title><meta name="description" content="如果各位看官熟悉 Git 和 GitHub ，可与 Docker 做个类比，可更加容易理解 Docker 和 Docker Hub 及两者关系。
+
+
+docker version显示 Docker 版本信息。
+docker info显示 Docker 系统信息，包括镜像和容器数。
+docker se"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Hexo</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Docker命令使用详解</a></h3></div><div class="post-content"><p>如果各位看官熟悉 Git 和 GitHub ，可与 Docker 做个类比，可更加容易理解 Docker 和 Docker Hub 及两者关系。</p>
+<hr>
+<ol>
+<li>docker version<br>显示 Docker 版本信息。</li>
+<li>docker info<br>显示 Docker 系统信息，包括镜像和容器数。</li>
+<li>docker search<br>docker search [options “o”&gt;] term<br>docker search -s  django</li>
+</ol>
+<p>从 Docker Hub 中搜索符合条件的镜像。</p>
+<p>–automated 只列出 automated build<br>类型的镜像；</p>
+<p>–no-trunc 可显示完整的镜像描述；</p>
+<p>-s 40 列出收藏数不小于40的镜像。</p>
+<ol>
+<li>docker pull<br>docker pull [-a “o”&gt;] [user/ “o”&gt;]name[:tag “o”&gt;]<br>docker pull laozhu/telescope:latest</li>
+</ol>
+<p>从 Docker Hub 中拉取或者更新指定镜像。</p>
+<p>-a 拉取所有 tagged 镜像 。</p>
+<ol>
+<li>docker login<br>root@moon:~# docker login<br>Username: username<br>Password: <em>**</em><br>Email: user@domain.com<br>Login Succeeded</li>
+</ol>
+<p>按步骤输入在 Docker Hub 注册的用户名、密码和邮箱即可完成登录。</p>
+<ol>
+<li>docker logout<br>运行后从指定服务器登出，默认为官方服务器。</li>
+<li>docker images<br>docker images [options “o”&gt;] [name]</li>
+</ol>
+<p>列出本地所有镜像。其中 [name] 对镜像名称进行关键词查询。</p>
+<p>-a 列出所有镜像（含过程镜像）；</p>
+<p>-f 过滤镜像，如： -f [‘dangling=true’] 只列出满足<br>dangling=true 条件的镜像；</p>
+<p>–no-trunc 可显示完整的镜像ID；</p>
+<p>-q 仅列出镜像ID。</p>
+<p>–tree 以树状结构列出镜像的所有提交历史。</p>
+<ol>
+<li>docker ps<br>列出所有运行中容器。</li>
+</ol>
+<p>-a 列出所有容器（含沉睡镜像）；</p>
+<p>–before=”nginx” 列出在某一容器之前创建的容器，接受容器名称和ID作为参数；</p>
+<p>–since=”nginx” 列出在某一容器之后创建的容器，接受容器名称和ID作为参数；</p>
+<p>-f [exited=<int>] 列出满足<br>exited=<int> 条件的容器；</int></int></p>
+<p>-l 仅列出最新创建的一个容器；</p>
+<p>–no-trunc 显示完整的容器ID；</p>
+<p>-n=4 列出最近创建的4个容器；</p>
+<p>-q 仅列出容器ID；</p>
+<p>-s 显示容器大小。</p>
+<ol>
+<li>docker rmi<br>docker rmi [options “o”&gt;] <image>  “o”&gt;[image…]<br>docker rmi nginx:latest postgres:latest python:latest</image></li>
+</ol>
+<p>从本地移除一个或多个指定的镜像。</p>
+<p>-f 强行移除该镜像，即使其正被使用；</p>
+<p>–no-prune 不移除该镜像的过程镜像，默认移除。</p>
+<ol>
+<li>docker rm<br>docker rm [options “o”&gt;] <container>  “o”&gt;[container…]<br>docker rm nginx-01 nginx-02 db-01 db-02<br>sudo docker rm -l /webapp/redis</container></li>
+</ol>
+<p>-f 强行移除该容器，即使其正在运行；</p>
+<p>-l 移除容器间的网络连接，而非容器本身；</p>
+<p>-v 移除与容器关联的空间。</p>
+<ol>
+<li>docker history<br>docker history  “o”&gt;[options] <image></image></li>
+</ol>
+<p>查看指定镜像的创建历史。</p>
+<p>–no-trunc 显示完整的提交记录；</p>
+<p>-q 仅列出提交记录ID。</p>
+<ol>
+<li>docker start|stop|restart<br>docker start|stop “p”&gt;|restart [options “o”&gt;] <container>  “o”&gt;[container…]</container></li>
+</ol>
+<p>启动、停止和重启一个或多个指定容器。</p>
+<p>-a 待完成</p>
+<p>-i 启动一个容器并进入交互模式；</p>
+<p>-t 10 停止或者重启容器的超时时间（秒），超时后系统将杀死进程。</p>
+<ol>
+<li>docker kill<br>docker kill  “o”&gt;[options “o”&gt;] <container>  “o”&gt;[container…]</container></li>
+</ol>
+<p>杀死一个或多个指定容器进程。</p>
+<p>-s “KILL” 自定义发送至容器的信号。</p>
+<ol>
+<li>docker events<br>docker events [options “o”&gt;]<br>docker events –since= “s2”&gt;”20141020”<br>docker events –until= “s2”&gt;”20120310”</li>
+</ol>
+<p>从服务器拉取个人动态，可选择时间区间。</p>
+<ol>
+<li>docker save<br>docker save -i “debian.tar”<br>docker save &gt; “debian.tar”</li>
+</ol>
+<p>将指定镜像保存成 tar 归档文件， docker load 的逆操作。保存后再加载（saved-loaded）的镜像不会丢失提交历史和层，可以回滚。</p>
+<p>-o “debian.tar” 指定保存的镜像归档。</p>
+<ol>
+<li>docker load<br>docker load [options]<br>docker load &lt; debian.tar<br>docker load -i “debian.tar”</li>
+</ol>
+<p>从 tar 镜像归档中载入镜像， docker save 的逆操作。保存后再加载（saved-loaded）的镜像不会丢失提交历史和层，可以回滚。</p>
+<p>-i “debian.tar” 指定载入的镜像归档。</p>
+<ol>
+<li>docker export<br>docker export <container><br>docker export nginx-01 &gt; export.tar</container></li>
+</ol>
+<p>将指定的容器保存成 tar 归档文件， docker import 的逆操作。导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚。</p>
+<ol>
+<li>docker import<br>docker import url|-  “o”&gt;[repository[:tag “o”&gt;]]<br>cat export.tar  “p”&gt;| docker import - imported-nginx:latest<br>docker import <a href="http://example.com/export.tar" target="_blank" rel="external">http://example.com/export.tar</a></li>
+</ol>
+<p>从归档文件（支持远程文件）创建一个镜像， export 的逆操作，可为导入镜像打上标签。导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚。</p>
+<ol>
+<li>docker top<br>docker top <running_container>  “o”&gt;[ps options]</running_container></li>
+</ol>
+<p>查看一个正在运行容器进程，支持 ps 命令参数。</p>
+<ol>
+<li>docker inspect<br>docker instpect nginx:latest<br>docker inspect nginx-container</li>
+</ol>
+<p>检查镜像或者容器的参数，默认返回 JSON 格式。</p>
+<p>-f 指定返回值的模板文件。</p>
+<ol>
+<li>docker pause<br>暂停某一容器的所有进程。</li>
+<li>docker unpause<br>docker unpause <container></container></li>
+</ol>
+<p>恢复某一容器的所有进程。</p>
+<ol>
+<li>docker tag<br>docker tag [options “o”&gt;] <image>[:tag “o”&gt;] [repository/ “o”&gt;][username/]name “o”&gt;[:tag]</image></li>
+</ol>
+<p>标记本地镜像，将其归入某一仓库。</p>
+<p>-f 覆盖已有标记。</p>
+<ol>
+<li>docker push<br>docker push name[:tag “o”&gt;]<br>docker push laozhu/nginx:latest</li>
+</ol>
+<p>将镜像推送至远程仓库，默认为 Docker Hub 。</p>
+<ol>
+<li>docker logs<br>docker logs [options “o”&gt;] <container><br>docker logs -f -t –tail= “s2”&gt;”10” insane_babbage</container></li>
+</ol>
+<p>获取容器运行时的输出日志。</p>
+<p>-f 跟踪容器日志的最近更新；</p>
+<p>-t 显示容器日志的时间戳；</p>
+<p>–tail=”10” 仅列出最新10条容器日志。</p>
+<ol>
+<li>docker run<br>docker run [options “o”&gt;] <image> [ “nb”&gt;command]  “o”&gt;[arg…]</image></li>
+</ol>
+<p>启动一个容器，在其中运行指定命令。</p>
+<p>-a stdin 指定标准输入输出内容类型，可选 STDIN/<br>STDOUT / STDERR 三项；</p>
+<p>-d 后台运行容器，并返回容器ID；</p>
+<p>-i 以交互模式运行容器，通常与 -t 同时使用；</p>
+<p>-t 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</p>
+<p>–name=”nginx-lb” 为容器指定一个名称；</p>
+<p>–dns 8.8.8.8 指定容器使用的DNS服务器，默认和宿主一致；</p>
+<p>–dns-search example.com 指定容器DNS搜索域名，默认和宿主一致；</p>
+<p>-h “mars” 指定容器的hostname；</p>
+<p>-e username=”ritchie” 设置环境变量；</p>
+<p>–env-file=[] 从指定文件读入环境变量；</p>
+<p>–cpuset=”0-2” or –cpuset=”0,1,2”<br>绑定容器到指定CPU运行；<br>-c 待完成<br>-m 待完成</p>
+<p>–net=”bridge” 指定容器的网络连接类型，支持 bridge /<br>host / none<br>container:<name|id> 四种类型；<br>–link=[] 待完成<br>–expose=[] 待完成</name|id></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-11-18</span><i class="fa fa-tag"></i><a href="/tags/技术/" title="技术" class="tag">技术 </a><a href="/tags/docker/" title="docker" class="tag">docker </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://timebook.me/2017/11/18/docker-cmd-detail/,Hexo,Docker命令使用详解,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/11/19/docker-use-aliyun-jiasu/" title="Docker使用阿里云docker镜像加速" class="btn">上一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
