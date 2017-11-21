@@ -7,7 +7,7 @@ alias gits=’git status’
 
 vim /etc/profile
 
-然后在~/.bash_profile或...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-11-20</span><i class="fa fa-tag"></i><a href="/tags/技术/" title="技术" class="tag">技术 </a><a href="/tags/mac/" title="mac" class="tag">mac </a><a href="/tags/alias/" title="alias" class="tag">alias </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/11/20/docker-delete-cmd/">Docker 容器镜像删除</a></h3></div><div class="post-content"><p>1.停止所有的container，这样才能够删除其中的images：
+然后在~/.bash_profile里...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-11-20</span><i class="fa fa-tag"></i><a href="/tags/技术/" title="技术" class="tag">技术 </a><a href="/tags/mac/" title="mac" class="tag">mac </a><a href="/tags/alias/" title="alias" class="tag">alias </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/11/20/docker-delete-cmd/">Docker 容器镜像删除</a></h3></div><div class="post-content"><p>1.停止所有的container，这样才能够删除其中的images：
 1docker stop $(docker ps -a -q)
 如果想要删除所有container的话再加一个指令：
 1docker rm $(docker ps -a -q)

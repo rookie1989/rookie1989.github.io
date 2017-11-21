@@ -16,9 +16,9 @@ vim /etc/profile
 <blockquote>
 <p>vim /etc/profile</p>
 </blockquote>
-<p>然后在~/.bash_profile或/etc/profile（二选一） 里面添加如下这一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">［［ -f ~/.bash_aliases ］］ &amp;&amp; . ~/.bash_aliases</div></pre></td></tr></table></figure></p>
+<p>然后在~/.bash_profile里面添加如下这一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">［［ -f ~/.bash_aliases ］］ &amp;&amp; . ~/.bash_aliases</div></pre></td></tr></table></figure></p>
 <p>逻辑含义就是检查是否存在~/.bash_aliases 这个文件，如果存在就执行 . 命令加载此文件<br>或者这一段，其实逻辑含义一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ［ -f ~/.bash_aliases ］; then</div><div class="line">    . ~/.bash_aliases</div><div class="line">fi</div></pre></td></tr></table></figure></p>
-<p>或者也可以写成这样的形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test -f ~/.bash_aliases &amp;&amp; source ~/.bash_aliases</div></pre></td></tr></table></figure></p>
+<p>或者也可以写成这样的形式<strong>推荐</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test -f ~/.bash_aliases &amp;&amp; source ~/.bash_aliases</div></pre></td></tr></table></figure></p>
 <p>这样配置以后，所有想要做的别名工作都可以通过编辑~/.bash_aliases 来进行，统一管理。</p>
 <hr>
 <p>创建bash_aliases文件</p>
@@ -27,7 +27,7 @@ vim /etc/profile
 </blockquote>
 <p>通过source命令重新执行命令生效</p>
 <blockquote>
-<p>source .bash_profile</p>
+<p>source .bash_profile<br>source .bash_aliases</p>
 </blockquote>
 <p>现在你就可以在命令行窗口直接输入gits代替git status命令了</p>
 <p>参考链接：<br>1、<a href="https://www.douban.com/note/577926866/" target="_blank" rel="external">https://www.douban.com/note/577926866/</a><br>2、<a href="http://blog.csdn.net/xiao_xiao_c/article/details/73162525" target="_blank" rel="external">http://blog.csdn.net/xiao_xiao_c/article/details/73162525</a></p>
